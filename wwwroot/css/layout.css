@@ -1,0 +1,204 @@
+.head-logo {
+    position: relative;
+    top: 50%;
+    transform: translate(0,-50%);
+
+    object-fit: cover;
+    height: 85%;
+    width: auto;
+    border: 0;
+    float: left;
+}
+.text-box-head {
+    padding-bottom: 1em;
+    padding-top: 1em;
+    position: relative;
+    top: 50%;
+    transform: translate(0,-50%);
+    height: 100%;
+}
+.head-text {
+    position: relative;
+    top: 25%;
+    transform: translate(0,-25%);
+    margin-left: 80px;
+}
+.caty-head {
+    position: relative;
+    top: 50%;
+    transform: translate(0,-50%);
+    height: 80%;
+    width: calc(11% - 1em);
+    background-color: #FFDF8C;
+    border: 0;
+    border-radius: 5px;
+    float: left;
+    margin-left: 1em;
+    text-align: left;
+    color: black;
+    font-size: 17px;
+    text-decoration: none;
+    font-family: Nova;
+    background: url(open.png) #FFDF8C no-repeat right 50%;
+    background-size: 19px;
+}
+.in-caty {
+    position: relative;
+    top: calc(50% - 0.7em);
+    font-size: 0.9em;
+    font-family: Nova;
+    transform: translate(0,-50%);
+    margin-left: 0.6em;
+}
+.search-head {
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translate(0,-50%);
+    height: 80%;
+    width: 97%;
+    background-color: #FFDF8C;
+    border: 0;
+    border-radius: 5px;
+    padding-left: 4em;
+    margin-right: 8em;
+}
+.search-head-loop {
+    margin-left: 1.4em;
+    margin-top: 0.7%;
+    position: relative;
+    top: 50%;
+    transform: translate(0,-50%);
+    z-index: 3;
+    object-fit: cover;
+    position: absolute;
+    height: 35%;
+    width: auto;
+    border: 0;
+    border-radius: 5px;
+}
+header {
+    padding-top: 1em;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 75%;
+    background-color: white;
+    height: 80px;
+    margin-bottom: 20px;
+}
+.container {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 85%;
+    height: max-content;
+    background-color: white;
+    border-radius: 20px;
+    padding-bottom: 2em;
+}
+.liked {
+    margin-left: -3.7em;
+    position: absolute;
+    top: 3.5em;
+    left: 85.9%;
+    transform: translate(0,-50%);
+    float: left;
+    object-fit: cover;
+    height: 24px;
+    width: auto;
+}
+.countLiked {
+    margin-left: -3.7em;
+    position: absolute;
+    top: 4.5em;
+    left: 84.5%;
+    transform: translate(0,-50%);
+    float: left;
+    object-fit: cover;
+    background: red;
+    color: aliceblue;
+    border-radius: 10px;
+    font-family: NovaBold;
+    font-size: 10px;
+    width: min-content;
+    height: min-content;
+    min-width: 15px;
+    text-align: center;
+    z-index: 1000;
+}
+.userd {
+    margin-left: -3.7em;
+    position: absolute;
+    top: 3.5em;
+    left: 88.7%;
+    transform: translate(0,-50%);
+    float: left;
+    object-fit: cover;
+    height: 24px;
+    width: auto;
+}
+.form-search {
+    position: relative;
+    float: right;
+    width: calc(100% - 11% - 336px - 4em - 2.5em);
+    height: 100%;
+}
+
+.close-caty {
+    position: absolute;
+    top: -19%;
+    left: 32.8%;
+    width: 20px;
+}
+/* Extra small devices (phones, 599px and down) */
+@media only screen and (max-width: 599px) {
+    .head-logo{
+        visibility: collapse;
+    }
+    .text-box-head {
+        visibility: collapse;
+    }
+    .head-text {
+        visibility: collapse;
+    }
+    .caty-head {
+       visibility: collapse;
+    }
+    .liked{
+        visibility: collapse;
+    }
+    .userd {
+        visibility: collapse;
+    }
+    .mobile-search-head-loop {
+        visibility: collapse;
+    }
+    body {
+        padding: 0.6em;
+        height: calc(100% - 3em - 5px);
+    }
+    .form-search {
+        visibility: collapse;
+    }
+    .search-head {
+        visibility: collapse;
+    }
+    .search-head-loop {
+        visibility: collapse;
+    }
+    header {
+        padding: 0;
+        margin: 0;
+        width: 0;
+        height: 0;
+        visibility: collapse;
+    }
+    .container {
+        width: 100%;
+        border-radius: 10px;
+        height: 100%;
+    }
+}
+
+

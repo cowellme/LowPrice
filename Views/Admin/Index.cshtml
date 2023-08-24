@@ -1,0 +1,20 @@
+﻿@model LowPrice.Models.Market.AllItems
+
+
+<h1 class="dd">Выбери категорию</h1>
+    
+    @foreach(var category in Model.Catygories)
+    {
+        <form method="get" asp-action="Category" asp-controller="Admin">
+            <input type="text" name="name" value="@category.Name" hidden="true" />
+        <button class="dd-in-b">@category.Name</button>
+        </form>
+    }
+<h1 class="dd">Создать категорию</h1>
+<form method="post" asp-controller="Admin" asp-action="Index" class="dd-form">
+    <label class="dd-in-l">Название на Русском</label>
+    <input class="dd-in"  type="text" name="categoryRU" />
+    <label class="dd-in-l">Название на Английском</label>
+    <input class="dd-in" type="text" name="categoryEN" />
+    <button class="dd-in-b" type="submit">Сохранить</button>
+</form>

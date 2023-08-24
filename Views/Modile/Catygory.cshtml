@@ -1,0 +1,95 @@
+﻿@{
+    var ip = Context.Connection.RemoteIpAddress.ToString();
+    var num = Auth.Login(ip);
+}
+<div class="mobile-win">
+
+
+    <div class="content-line">
+        <h1 class="mobile-category-name">Категории</h1>
+        <details class="mobile-det">
+            <summary class="mobile-det-sum">Компьютер</summary>
+            <form asp-action="Search">
+                <input id="firstIn" value="Кресло" name="name" hidden="true" />
+                <button type="submit" class="mobile-det-cat" id="first">Кресло</button>
+            </form>
+
+            <form asp-action="Search">
+                <input id="secondIn" value="Мышь" name="name" hidden="true" />
+                <button type="submit" class="mobile-det-cat" id="second">Мышь</button>
+            </form>
+
+            <form asp-action="Search">
+                <input id="trithIn" value="Монитор" name="name" hidden="true" />
+                <button type="submit" class="mobile-det-cat" id="trith">Монитор</button>
+            </form>
+        </details>
+
+        <details class="mobile-det">
+            <summary class="mobile-det-sum">Киберспорт</summary>
+            <form asp-action="Search">
+                <input id="firstIn" value="Наушники" name="name" hidden="true" />
+                <button type="submit" class="mobile-det-cat" id="first">Наушники</button>
+            </form>
+
+            <form asp-action="Search">
+                <input id="secondIn" value="Игровая мышь" name="name" hidden="true" />
+                <button type="submit" class="mobile-det-cat" id="second">Игровая мышь</button>
+            </form>
+
+            <form asp-action="Search">
+                <input id="trithIn" value="Микрофон" name="name" hidden="true" />
+                <button type="submit" class="mobile-det-cat" id="trith">Микрофон</button>
+            </form>
+        </details>
+
+        <details class="mobile-det">
+            <summary class="mobile-det-sum">Игры</summary>
+            <form asp-action="Search">
+                <input id="firstIn" value="Клавиатура" name="name" hidden="true" />
+                <button type="submit" class="mobile-det-cat" id="first">Клавиатура</button>
+            </form>
+
+            <form asp-action="Search">
+                <input id="secondIn" value="Игровые наушники" name="name" hidden="true" />
+                <button type="submit" class="mobile-det-cat" id="second">Игровые наушники</button>
+            </form>
+
+            <form asp-action="Search">
+                <input id="trithIn" value="Беспроводные наушники" name="name" hidden="true" />
+                <button type="submit" class="mobile-det-cat" id="trith">Беспроводные наушники</button>
+            </form>
+        </details>
+    </div>
+
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Index">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_2_2023-08-09_20-57-38.jpg" />
+                <h5 class="mobile-name">Главная</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box">
+            <a asp-action="Catygory">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_3_2023-08-09_20-57-38.jpg" />
+                <h5 class="mobile-name">Категории</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Liked">
+                <img class="mobile-menu-bts" type="image" src="~/resource/heart.png" />
+                <h5 class="mobile-name">Избранное</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Userd">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_1_2023-08-09_20-57-38.jpg" />
+                <h5 class="mobile-name">Профиль</h5>
+            </a>
+        </div>
+    </div>
+</div>

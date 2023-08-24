@@ -1,0 +1,96 @@
+﻿@using LowPrice.Models.Admin
+@using LowPrice.Models.Market
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model LowPrice.Models.Market.AllItems
+<div class="grand-caty">
+    <link rel="stylesheet" href="~/css/dopdop.css" asp-append-version="true" />
+    <div class="grand-all-category">
+        <a asp-controller="Home" asp-action="Index"><img src="~/css/close.png" class="close-caty"/></a>
+        <div class="list-caty">
+            @{
+                var models = AllItems.GetAll();
+            }
+            @*@foreach (var category in models.Catygories)
+            {
+                @if (category.Items.Count > 0)
+                {
+                    string catyName = Slovar.CategoryToRus(category.Name);
+                    
+                }
+            }*@
+            <button class="cat B" id="ff" onclick="caty('Компьютер')">Компьютер</button>
+            <button class="cat B" id="ss" onclick="caty('Киберспорт')">Киберспорт</button>
+            <button class="cat B" id="tt" onclick="caty('Игры')">Игры</button>
+
+        </div>
+
+        <div class="about-caty">
+
+            <form asp-action="Search">
+                <input id="firstIn" value="Кресло" name="name" hidden="true"/>
+                <button type="submit" class="cat" id="first">Кресло</button>
+            </form>
+
+            <form asp-action="Search">
+                <input id="secondIn" value="Мышь" name="name" hidden="true"/>
+                <button type="submit" class="cat" id="second">Мышь</button>
+            </form>
+
+            <form asp-action="Search">
+                <input id="trithIn" value="Монитор" name="name" hidden="true"/>
+                <button type="submit" class="cat" id="trith">Монитор</button>
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="grand-search">
+
+</div>
+<script>
+    function caty(name) {
+        switch (name) {
+        case 'Киберспорт':
+                document.querySelector('#first').innerText = "Наушники";
+                document.querySelector('#firstIn').value = "Наушники";
+                document.querySelector('#second').innerText = "Игровая мышь";
+                document.querySelector('#secondIn').value = "Игровая мышь";
+                document.querySelector('#trith').innerText = "Микрофон";
+                document.querySelector('#trithIn').value = "Микрофон";
+                break;
+        case 'Компьютер':
+                document.querySelector('#first').innerText = "Кресло";
+                document.querySelector('#firstIn').value = "Кресло";
+                document.querySelector('#second').innerText = "Мышь";
+                document.querySelector('#secondIn').value = "Мышь";
+                document.querySelector('#trith').innerText = "Монитор";
+                document.querySelector('#trithIn').value = "Монитор";
+                break;
+        case 'Игры':
+                document.querySelector('#first').innerText = "Клавиатура";
+                document.querySelector('#firstIn').value = "Клавиатура";
+                document.querySelector('#second').innerText = "Игровая мышь";
+                document.querySelector('#secondIn').value = "Игровая мышь";
+                document.querySelector('#trith').innerText = "Игровые наушники";
+                document.querySelector('#trithIn').value = "Игровые наушники";
+                break;
+        default:
+                document.querySelector('#first').innerText = "Наушники";
+                document.querySelector('#firstIn').value = "Наушники";
+                document.querySelector('#second').innerText = "Игровая мышь";
+                document.querySelector('#secondIn').value = "Игровая мышь";
+                document.querySelector('#trith').innerText = "Микрофон";
+                document.querySelector('#trithIn').value = "Микрофон";
+                break;
+        }
+    }
+</script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+

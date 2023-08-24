@@ -1,0 +1,70 @@
+﻿@using UAParser
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using LowPrice.Models.Market
+@{
+    var ip = Context.Connection.RemoteIpAddress.ToString();
+    var num = Auth.Login(ip);
+    var countLiked= Liked.GetAll(num).Count;
+    
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LowPrice</title>
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/filtres.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/search.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/checkitem.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/mobile.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <a asp-action="Index" asp-controller="Home"><img class="head-logo" src="~/resource/logotype.jpg" /></a>
+            
+            <a asp-action="GrandSearch">
+                
+                <div class="caty-head"><span class="in-caty">Категории</span></div>
+            </a>
+            
+            <form asp-action="Search" class="form-search" method="post">
+                
+                <input class="search-head" name="name" src="~/resource/loop.png" value="Поиск товаров..." onfocus="if(value=='Поиск товаров...'){value='';}" onblur="if(value==''){value='Поиск товаров...';}" />
+
+                <button type="submit" hidden="true" class="searching"></button>
+            </form>
+
+            <img class="search-head-loop" type="image" src="~/resource/loop.png" />
+        </header>
+        <a asp-action="Liked" asp-controller="Home">
+            @{
+                if (countLiked > 1)
+                {
+                    <div class="countLiked">@countLiked</div>
+                }
+            }
+            
+            <img class="liked" type="image" src="~/resource/heartBlack.png"/>
+        </a>
+        <a asp-action="Index" asp-controller="Userd">
+            <img class="userd" type="image" src="~/resource/photo_1_2023-08-09_20-57-38.jpg" />
+        </a>
+        @RenderBody()
+    </div>
+
+    <footer>
+        
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

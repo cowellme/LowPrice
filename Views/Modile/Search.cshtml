@@ -1,0 +1,155 @@
+﻿@using LowPrice.Models.Market
+@model LowPrice.Models.Market.Item
+@{
+    var ip = Context.Connection.RemoteIpAddress.ToString();
+    var num = Auth.Login(ip);
+    var countLiked = Liked.GetAll(num).Count;
+    List<Item> listItems = new List<Item>();
+
+    if (Model.Name != null)
+        listItems = Item.GetSearchByItem(Model.Name);
+
+    if (Model.Color != null)
+        listItems.AddRange(Item.GetSearchByColor(Model.Color));
+
+    if (Model.Creater != null)
+        listItems.AddRange(Item.GetSearchByCreater(Model.Creater));
+
+}
+<div class="mobile-win">
+
+
+    <div class="content-line">
+        <h1 class="mobile-category-name">Поиск</h1>
+        <div class="mobile-filter">
+            <form asp-action="Search" method="post">
+                <h3>Цена, р</h3>
+                <input class="mobile-price-dip" name="priceMin" value="от 2010" onfocus="if (value == 'от 2010') { value = ' ' }" onblur="if (value == ' ') { value = 'от 2010' }" />
+                <input class="mobile-price-dip" name="priceMax" value="до 53235" onfocus="if (value == 'до 53235') { value = ' ' }" onblur="if (value == ' ') { value = 'до 53235' }" />
+                
+                
+                <details class="mobile-det-filter">
+                    <summary class="mobile-det-sum-filter">Производитель</summary>
+                    @{
+                        var crts = Item.GetCreaters();
+                        foreach (var crt in crts)
+                        {
+                            <div>
+                                <input class="mobile-creater-list-filter" type="checkbox" name="creater" value="@crt">
+                                <label for="scales">@crt</label>
+                            </div>
+                        }
+                    }
+                </details>
+                <details class="mobile-det-filter">
+                    <summary class="mobile-det-sum-filter">Назначение</summary>
+                    <div>
+                        <input class="mobile-creater-list-filter" type="checkbox" name="forthe">
+                        <label for="scales">Игры</label>
+                    </div>
+                </details>
+                <details class="mobile-det-filter">
+                    <summary class="mobile-det-sum-filter">Цвет</summary>
+                    @{
+                        var colors = Item.GetColors();
+                        foreach (var crt in colors)
+                        {
+                            <div>
+                                <input class="mobile-creater-list-filter" type="checkbox" name="color" value="@crt">
+                                <label for="scales">@crt</label>
+                            </div>
+                        }
+                    }
+                </details>
+
+                <button type="submit" class="mobile-btn-search-g">Поиск</button>
+            </form>
+        </div>
+
+        <div class="mobile-katalog">
+            @foreach (var item in listItems)
+            {
+                <div class="mobile-item-mian-katalog">
+
+                    @{
+                        var items = Liked.GetAll(num);
+
+                        var like = false;
+
+                        foreach (var n in items)
+                        {
+                            if (n != null)
+                            {
+                                if (n.Hash == item.Hash)
+                                {
+                                    like = true;
+                                }
+                            }
+                        }
+
+                        item.PhotoPath = $@"photo/{item.Hash}.jpeg";
+                    }
+                    <img src="~/@item.PhotoPath" class="item-main-photo" />
+
+                    <div class="mobile-item-main-price">@item.Price</div>
+                    <img class="mobile-item-main-price-valut" src="~/resource/valut.jpg">
+                    <form asp-action="CheckItem">
+                        <input hidden="true" value="like" name="action" />
+                        <input hidden="true" name="hash" value="@item.Hash" />
+                        <button class="mobile-void-btn" type="submit">
+                            @{
+                                if (like)
+                                {
+                                    <img class="item-main-like" src="~/resource/heartRed.png" />
+                                }
+                                else
+                                {
+                                    <img class="item-main-like" src="~/resource/heart.png" />
+                                }
+                            }
+                        </button>
+                    </form>
+                    <h2 class="mobile-item-main-litdescrp">
+                        @item.Creater&nbsp;@item.Name
+                    </h2>
+                    <form asp-action="CheckItem" method="post">
+                        <input type="text" hidden="true" name="hash" value="@item.Hash" />
+                        <input hidden="true" value="check" name="action" />
+                        <button class="mobile-item-main-sub" type="submit">Сравнить</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Index">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_2_2023-08-09_20-57-38.jpg" />
+                <h5 class="mobile-name">Главная</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Catygory">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_3_2023-08-09_20-57-38.jpg" />
+                <h5 class="mobile-name">Категории</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Liked">
+                <img class="mobile-menu-bts" type="image" src="~/resource/heart.png" />
+                <h5 class="mobile-name">Избранное</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Userd">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_1_2023-08-09_20-57-38.jpg" />
+                <h5 class="mobile-name">Профиль</h5>
+            </a>
+        </div>
+    </div>
+</div>

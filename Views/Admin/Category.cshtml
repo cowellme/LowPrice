@@ -1,0 +1,31 @@
+﻿@model LowPrice.Models.Market.Category
+<h1 class="dd">Выбери предмет</h1>
+    
+    @foreach (var item in Model.Items)
+    {
+        <form asp-action="Delete" asp-controller="Admin">
+            <label>@item.Name</label>
+            <input hidden="true" type="text" value="@item.Category" name="caty" />
+            <input hidden="true" type="text" value="@item.Hash" name="hash" />
+            <button type="submit">Удалить</button>
+        </form>
+    }
+    
+<form method="post" asp-action="AddItem" asp-controller="Admin">
+    <label class="la-add">Производитель</label>
+    <input class="in-add" type="text" name="creater" />
+    <label class="la-add">Название</label>
+    <input class="in-add" type="text" name="name" />
+    <label class="la-add">Категория</label>
+    <input class="in-add" type="text" name="category" value="@Model.Name" />
+    <label class="la-add">Цена</label>
+    <input class="in-add" type="text" name="price" />
+    <label class="la-add">Описание</label>
+    <input class="in-add" type="text" name="descr" />
+    <label class="la-add">Цвет</label>
+    <input class="in-add" type="text" name="color" />
+    <label class="la-add">Материал</label>
+    <input class="in-add" type="text" name="material" />
+
+    <button type="submit">Save</button>
+</form>

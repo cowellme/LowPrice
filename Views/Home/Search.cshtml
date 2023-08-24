@@ -1,0 +1,118 @@
+﻿@using LowPrice.Models.Market
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model LowPrice.Models.Market.Item
+@{
+    var ip = Context.Connection.RemoteIpAddress.ToString();
+    var num = Auth.Login(ip);
+    var countLiked = Liked.GetAll(num).Count;
+    List<Item> listItems = new List<Item>();
+
+    if(Model.Name != null)
+        listItems = Item.GetSearchByItem(Model.Name);
+
+    if (Model.Color != null)
+        listItems.AddRange(Item.GetSearchByColor(Model.Color));
+
+    if (Model.Creater != null)
+        listItems.AddRange(Item.GetSearchByCreater(Model.Creater));
+    
+}
+
+
+<div class="main-win">
+    
+    <div class="filter">
+        <form asp-action="Search" method="post">
+            <h3>Цена, р</h3>
+            <input class="price-dip" name="priceMin" value="от 2010" onfocus="if (value == 'от 2010') { value = ' ' }" onblur="if (value == ' ') { value = 'от 2010' }"/>
+            <input class="price-dip" name="priceMax" value="до 53235" onfocus="if (value == 'до 53235') { value = ' ' }" onblur="if (value == ' ') { value = 'до 53235' }"/>
+            <h3 class="tag">Производитель</h3>
+
+            @{
+                var crts = Item.GetCreaters();
+                foreach (var crt in crts)
+                {
+                    <div>
+                        <input class="creater-list" type="checkbox" name="creater" value="@crt">
+                        <label for="scales">@crt</label>
+                    </div>
+                }
+            }
+
+            <h3 class="tag">Назначение</h3>
+            <div>
+                <input class="creater-list" type="checkbox" name="forthe">
+                <label for="scales">Игры</label>
+            </div>
+
+            <h3 class="tag">Цвет</h3>
+
+            @{
+                var colors = Item.GetColors();
+                foreach (var crt in colors)
+                {
+                    <div>
+                        <input class="creater-list" type="checkbox" name="color" value="@crt">
+                        <label for="scales">@crt</label>
+                    </div>
+                }
+            }
+            <button type="submit" class="btn-search-g">Поиск</button>
+        </form>
+    </div>
+
+    <div class="katalog">
+        @foreach (var item in listItems)
+        {
+            <div class="item-mian-katalog">
+
+                @{
+                    var items = Liked.GetAll(num);
+
+                    var like = false;
+
+                    foreach (var n in items)
+                    {
+                        if (n != null)
+                        {
+                            if (n.Hash == item.Hash)
+                            {
+                                like = true;
+                            }
+                        }
+                    }
+
+                    item.PhotoPath = $@"photo/{item.Hash}.jpeg";
+                }
+                <img src="~/@item.PhotoPath" class="item-main-photo"/>
+
+                <div class="item-main-price">@item.Price</div>
+                <img class="item-main-price-valut" src="~/resource/valut.jpg">
+                <form asp-action="CheckItem">
+                    <input hidden="true" value="like" name="action"/>
+                    <input hidden="true" name="hash" value="@item.Hash"/>
+                    <button class="void-btn" type="submit">
+                        @{
+                            if (like)
+                            {
+                                <img class="item-main-like" src="~/resource/heartRed.png"/>
+                            }
+                            else
+                            {
+                                <img class="item-main-like" src="~/resource/heart.png"/>
+                            }
+                        }
+                    </button>
+                </form>
+                <h2 class="item-main-litdescrp">
+                    @item.Creater&nbsp;@item.Name
+                </h2>
+                <form asp-action="CheckItem" method="post">
+                    <input type="text" hidden="true" name="hash" value="@item.Hash"/>
+                    <input hidden="true" value="check" name="action"/>
+                    <button class="item-main-sub" type="submit">Сравнить цены</button>
+                </form>
+            </div>
+        }
+    </div>
+</div>

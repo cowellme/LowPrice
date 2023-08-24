@@ -1,0 +1,25 @@
+﻿@using LowPrice.Models
+@using LowPrice.Models.Market
+@model LowPrice.Models.Market.Liked
+@{
+    var num = Auth.Login(Model.Ip);
+}
+<div class="main-win">
+    <h1 class="category-name">Профиль</h1>
+    <div class="category-main tgb">
+        @if (num != "none")
+        {
+            <a href="https://t.me/LowPriceAuthbot" target="_blank"><img class="tg" src="~/resource/telegram.png" /></a>
+        }
+        else
+        {
+            <form asp-controller="Home" asp-action="Regist" class="form-reg">
+                <label class="reg-liked" style="font-family: NovaBold;">Регистрация</label>
+                <input hidden="true" value="@Model.Ip"/>
+                <input class="phone-num" type="phone" name="number" value="+7" onblur="if (value == ' ') { value = '+7' }"/>
+                <button class="reg-phone-num" type="submit">Зарегистрироваться</button>
+            </form>
+            <a href="https://t.me/LowPriceAuthbot" target="_blank"><img class="tg" src="~/resource/telegram.png" /></a>
+        }
+    </div>
+</div>

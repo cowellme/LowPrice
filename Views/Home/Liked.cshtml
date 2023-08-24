@@ -1,0 +1,41 @@
+﻿@using LowPrice.Models.Market
+@model LowPrice.Models.Market.Liked
+@{
+    var ip = Context.Connection.RemoteIpAddress.ToString();
+    var num = Auth.Login(ip);
+}
+<div class="main-win">
+    <h1 class="category-name">Избранное</h1>
+    <div class="category-main tgb">
+        @if (num != "none")
+        {
+            var items = Liked.GetAll(num);
+
+            @foreach (var item in items)
+            {
+                @if (item != null)
+                {
+                    <form asp-action="CheckItem" method="post" class="flike">
+                        <div class="item-mian">
+                            @{
+                                item.PhotoPath = $@"photo/{item.Hash}.jpeg";
+                            }
+                            <img src="~/@item.PhotoPath" class="item-main-photo" />
+                            <div class="item-main-price">@item.Price</div>
+                            <img class="item-main-price-valut" src="~/resource/valut.jpg">
+                            <input type="submit" name="action" value="del" class="item-main-like in" />
+
+                            <h2 class="item-main-litdescrp">@item.Name</h2>
+                            <input type="text" hidden="true" name="hash" value="@item.Hash"/>
+                            <button class="item-main-sub" type="submit">Сравнить цены</button>
+                        </div>
+                    </form>
+                }
+            }
+        }
+        else
+        {
+            <label class="reg-liked" style="font-family: NovaBold;">Пройдите регистрацию</label>
+        }
+    </div>
+</div>

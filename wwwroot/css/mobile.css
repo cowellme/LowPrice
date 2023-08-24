@@ -1,0 +1,415 @@
+html{
+    height: 100%;
+}
+body {
+    height: calc(100% - 1.2em);
+}
+.container {
+    background-color: white;
+    padding: 0;
+}
+.mobile-win {
+    padding: 0.6em;
+    height: calc(100% - 1.2em);
+    width: calc(100% - 1.2em);
+    background-color: white;
+    z-index: 3;
+    border-radius: 10px;
+}
+.mobile-search{
+    width: 100%;
+    height: 55px;
+    margin-bottom: 10px;
+}
+.mobile-form-search {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+.mobile-search-head {
+    width: calc(100% - 4.2em);
+    height: 100%;
+    border: 0;
+    border-radius: 5px;
+    background: url(loop.png) #FFDF8C no-repeat left 50%;
+    background-position: 2%;
+    background-size: 40px;
+    padding-left: 4em;
+}
+.mobile-search-head-loop{
+    position: absolute;
+    height: calc(2.5em - 1em);
+    margin-top: 1em;
+    margin-left: 1em;
+}
+.mobile-content{
+    font-family: Nova;
+    height: calc(100% - 100px - 0.6em);
+    width: 100%;
+    overflow-y: auto;
+}
+.content-line{
+    width: 100%;
+    height: calc(100% - 67px);
+    overflow-y: auto;
+}
+.mobile-menu {
+    padding-top: 0.6em;
+    border-top: 1px solid;
+    position: relative;
+    width: calc(100%);
+    height: calc(60px);
+}
+.mobile-menu-box {
+    position: relative;
+    width: calc(100%/4);
+    height: 30%;
+    float: left;
+}
+.mobile-menu-bts {
+    font-family: Nova;
+    object-fit: cover;
+    position: relative;
+    left: 50%;
+    height: 100%;
+    width: auto;
+    transform: translate(-50%,0);
+}
+.mobile-name {
+    font-family: Nova;
+    font-size: 12px;
+    margin-top: -3px;
+    text-align: center;
+    
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.mobile-add-img{
+    width: 100%;
+    border-radius: 5px;
+}
+.mobile-item-main-litdescrp {
+    width: 100%;
+    height: 10px;
+    padding-top: .5em;
+    padding-left: .7em;
+    float: left;
+    font-size: 10px;
+    font-family: Nova;
+}
+.mobile-item-main-price {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    float: left;
+    font-size: 20px;
+    font-family: NovaBold;
+    padding-top: .1em;
+    padding-left: .3em;
+    padding-right: .1em;
+}
+.mobile-category-name {
+    font-family: NovaBold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-left: 20px; 
+}
+.mobile-category-main{
+    width: 100%;
+    height: 205px;
+}
+.mobile-item-mian {
+    width: calc(100% / 3);
+    font-family: NovaBold;
+    float: left;
+}
+.mobile-item-main-price-valut {
+    object-fit: cover;
+    width: auto;
+    height: 8px;
+    position: relative;
+    font-size: 12px;
+    padding-top: 1em;
+    font-family: NovaBold;
+}
+.mobile-item-main-like {
+    object-fit: cover;
+    height: auto;
+    width: 20px;
+    float: right;
+}
+    .mobile-item-main-like:hover {
+        content: url(/resource/heartRed.png);
+    }
+.mobile-item-main-sub {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 90%;
+    height: 24px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 3px;
+    background: #FFDF8C;
+    font-size: 12px;
+    font-family: NovaBold;
+    margin-bottom: 10px;
+}
+.mobile-check-all {
+    float: right;
+    padding-right: 1em;
+    border: 0;
+    background-color: white;
+}
+.mobile-void-btn {
+    width: min-content;
+    height: min-content;
+    border: 0;
+    margin-top: -20px;
+    margin-right: 7px;
+    float: right;
+    background-color: white;
+    padding: 0;
+}
+
+/*check*/
+.mobile-item-category {
+    font-family: Nova;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.52);
+}
+.mobile-item-name {
+    margin-bottom: 1.5em;
+    font-family: Nova;
+    font-size: 18px;
+    color: #000;
+}
+.mobile-large-photo {
+    object-fit: cover;
+    width: 100%;
+    float: right;
+}
+.mobile-item-price {
+    float: left;
+    margin-top: 1em;
+    margin-left: 1em;
+    font-size: 24px;
+    font-family: NovaBold;
+}
+.mobile-item-price-valut {
+    margin-top: 2.2em;
+    margin-left: .3em;
+    object-fit: cover;
+    width: 6%;
+    float: left;
+}
+.mobile-name-decrp {
+    color: rgba(0, 0, 0, 0.45);
+    font-family: Nova;
+    width: calc(40%);
+}
+.mobile-value-decrp {
+    font-family: Nova;
+    font-size: 15px;
+    height: 70px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.mobile-photo-item-check {
+    width: 40%;
+    height: 100px;
+    float: left;
+}
+.mobile-about-item {
+    padding-left: 3em;
+    padding-right: 3em;
+    width: calc(60% - 6em);
+    height: max-content;
+    float: right;
+}
+.mobile-sravn-item {
+    width: 100%;
+    margin-top: 5em;
+    height: calc(100% - 265px - 13em);
+}
+.mobile-decrp {
+    margin-bottom: 2em;
+    height: 100%;
+}
+.mobile-items {
+    width: 100%;
+    height: max-content;
+}
+.mobile-other-item {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 2em;
+}
+.mobile-other-photo {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    object-fit: cover;
+    width: calc(100% / 4 - 1em);
+    height: auto;
+    float: left;
+    margin-right: 1em;
+}
+.mobile-other-name {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 12px;
+    float: left;
+    width: calc(100% / 4 - 1em);
+    font-family: Nova;
+    margin-right: 1em;
+}
+.mobile-other-photo-company {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    object-fit: cover;
+    width: calc(100% / 4 - 1em);
+    height: auto;
+    float: left;
+    margin-right: 1em;
+}
+.mobile-other-price-sub {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    text-align: start;
+    font-size: 12px;
+    width: calc(100% / 4 - 1em);
+    float: left;
+    margin-right: 1em;
+}
+.mobile-item-other-sub {
+    height: 34px;
+    width: 100%;
+    border: 0;
+    border-radius: 3px;
+    background: #FFDF8C;
+    font-size: 12px;
+    font-family: NovaBold;
+}
+.mobile-other-price-sub {
+    position: relative;
+    font-family: NovaBold;
+    font-size: 15px;
+}
+
+/*Liked*/
+.mobile-tg{
+    object-fit: contain;
+    height: 40px;
+    width: 100%;
+}
+.mobile-phone-num {
+    height: 25px;
+    width: calc(100% - 10px);
+    border-radius: 5px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+.mobile-reg-phone-num {
+    height: 31px;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    background: #FFDF8C;
+    font-family: NovaBold;
+    margin-bottom: 33px;
+}
+
+.mobile-shd {
+    opacity: 0.5;
+}
+.mobile-det {
+    margin-top: 30px;
+}
+.mobile-det-sum {
+    font-family: NovaBold;
+    font-size: 23px;
+    
+}
+.mobile-det-cat {
+    width: 100%;
+    text-align: left;
+    font-family: Nova;
+    border: 0;
+    background: white;
+    font-size: 19px;
+    margin-top: 20px;
+    padding-left: 40px; 
+    border-bottom: 1px solid lightgray;
+}
+.mobile-filter {
+    font-family: NovaBold;
+    margin-bottom: 20px;
+}
+.mobile-price-dip {
+    margin-top: 10px;
+    border: 0;
+    background: #ffdf8c;
+    padding: 0.5em;
+    border-radius: 6px;
+    font-family: NovaBold;
+    color: lightslategray;
+}
+.mobile-det-filter {
+    margin-top: 10px;
+    font-size: 18px;
+}
+.mobile-creater-list-filter {
+    margin-top: 10px;
+}
+.mobile-btn-search-g {
+    margin-top: 10px;
+    width: 100%;
+    border: 0;
+    background: #ffdf8c;
+    padding: 0.5em;
+    border-radius: 6px;
+    font-family: NovaBold;
+    color: black;
+}
+.mobile-item-mian-katalog {
+    width: calc(49%);
+    float: left;
+    margin: 0;
+}
+.mobile-katalog {
+    width: 100%;
+}
+
+.countLiked {
+    position: absolute;
+    top: 93%;
+    left: 72%
+}
+
+
+@supports (-webkit-touch-callout: none) {
+    .mobile-item-main-sub {
+        color: black;
+        font-size: 13px;
+        font-family: Nova;
+    }
+
+    .mobile-det-cat {
+        color: black;
+    }
+
+    .mobile-item-main-sub {
+        margin-top: 33px;
+    }
+
+    .mobile-win {
+        height: calc(120%);
+    }
+}

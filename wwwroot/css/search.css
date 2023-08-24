@@ -1,0 +1,68 @@
+
+.filter {
+    font-family: Nova;
+    width: calc(20% - 0.2em);
+    height: calc(500px - 20px);
+    float: left;
+    overflow-y: auto;
+    padding-bottom: 20px;
+
+}
+.filter::-webkit-scrollbar {
+    width: 0;
+}
+
+.katalog {
+    width: 100%;
+    height: 500px;
+}
+.item-mian-katalog {
+    width: calc((80% - 0.2em) / 6);
+    height: 100%;
+    float: left;
+}
+.price-dip {
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    width: calc(50% - 5% - 0.2em - 2px);
+    height: 30px;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    color: lightslategray; 
+    font-family: NovaBold;
+    text-align: center;
+}
+.creater-list {
+    background-color: aquamarine;
+    float: left;
+    padding: 0;
+    margin: 0;
+    margin-top: .2em;
+    margin-right: .5em;
+}
+.tag{
+    margin-top: 1em;
+}
+
+.container{
+    background-color: white;
+}
+.btn-search-g {
+    width: calc(80%);
+    height: 30px;
+    font-family: NovaBold;
+    margin-top: 1em;
+    border: 0;
+    border-radius: 5px;
+    background-color: #FFDF8C;
+}
+
+.cat {
+    font-family: Nova;
+}
+
+.B {
+    font-family: NovaBold;
+}

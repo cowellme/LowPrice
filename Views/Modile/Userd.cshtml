@@ -1,0 +1,67 @@
+﻿@{
+    var ip = Context.Connection.RemoteIpAddress.ToString();
+    var num = Auth.Login(ip);
+    string os = "";
+    
+}
+<div class="mobile-win">
+
+
+    <div class="content-line">
+        <h1 class="mobile-category-name">Профиль</h1>
+        @{
+            if (num != "none")
+            {
+                <a href="https://t.me/LowPriceAuthbot" target="_blank"><img class="mobile-tg" src="~/resource/telegram.png"/></a>
+            }
+            else
+            {
+                <label class="mobile-reg-liked" style="font-family: NovaBold;">Регистрация</label>
+                <form asp-action="Regist">
+                    <input hidden="true" value="@ip" />
+                    <input hidden="true" name="act" value="regist"/>
+                    <input class="mobile-phone-num" type="phone" name="number" value="+7" onblur="if (value == ' ') { value = '+7' }"/>
+                    <button class="mobile-reg-phone-num" type="submit">Зарегистрироваться</button>
+                </form>
+                <label class="mobile-reg-liked " style="font-family: NovaBold;">Войти</label>
+                <form asp-action="Regist">
+                    <input hidden="true" name="ips" value="@ip" />
+                    <input hidden="true" name="act" value="login"/>
+                    <input class="mobile-phone-num" type="phone" name="number" value="+7" onblur="if (value == ' ') { value = '+7' }"/>
+                    <button class="mobile-reg-phone-num " type="submit">Логин</button>
+                </form>
+            }
+        }
+    </div>
+
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Index">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_2_2023-08-09_20-57-38.jpg" />
+                <h5 class="mobile-name">Главная</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Catygory">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_3_2023-08-09_20-57-38.jpg" />
+                <h5 class="mobile-name">Категории</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Liked">
+                <img class="mobile-menu-bts" type="image" src="~/resource/heart.png" />
+                <h5 class="mobile-name">Избранное</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box">
+            <a asp-action="Userd">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_1_2023-08-09_20-57-38.jpg" />
+                <h5 class="mobile-name">Профиль</h5>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="UAParser" Version="3.1.47" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AllItems\Computer\" />
+    <Folder Include="AllItems\Cybersport\" />
+    <Folder Include="AllItems\Game\" />
+    <Folder Include="Views\Userd\" />
+    <Folder Include="wwwroot\all\" />
+    <Folder Include="wwwroot\clients\" />
+    <Folder Include="wwwroot\photo\" />
+  </ItemGroup>
+
+</Project>

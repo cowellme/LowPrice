@@ -1,0 +1,148 @@
+﻿@using LowPrice.Models.Admin
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Text.RegularExpressions
+@model LowPrice.Models.Market.Item
+
+<link rel="stylesheet" href="~/css/search.css" asp-append-version="true" />
+<div class="main-win">
+    @{
+        var catyNameRus = Slovar.CategoryToRus(Model.Category);
+        string priceLdor = RefreshPrices.ReturnPricePlatform("ldor", Model.Hash);
+        string uriLdor = RefreshPrices.ReturnUriPlatform("ldor", Model.Hash);
+        string priceSitilink = RefreshPrices.ReturnPricePlatform("sitilink", Model.Hash);
+        string uriSitilink = RefreshPrices.ReturnUriPlatform("sitilink", Model.Hash);
+
+        double p1 = 0, p2 = 0;
+        string lowprice;
+        if (priceLdor != "")
+        {
+            try
+            {
+                var lp = Regex.Match(priceLdor, "([0-9]*)").Groups[1].Value;
+                p1 = Convert.ToDouble(lp);
+            }
+            catch
+            {
+                p1 = 0;
+            }
+        }
+
+        if (priceSitilink != "")
+        {
+            try
+            {
+                var lp = Regex.Match(priceSitilink, "([0-9]*)").Groups[1].Value;
+                p2 = Convert.ToDouble(lp);
+            }
+            catch
+            {
+                p2 = 0;
+            }
+        }
+
+        if (p1 > p2)
+        {
+            lowprice = p2.ToString();
+        }
+        else if (p1 < p2)
+        {
+            lowprice = p1.ToString();
+        }
+        else
+        {
+            lowprice = Model.Price;
+        }
+    }
+    <h3 class="item-category">@catyNameRus</h3>
+    <h1 class="item-name">@Model.Creater&nbsp;@Model.Name </h1>
+    
+    <div class="sravn-item">
+        <div class="photo-item-check">
+            
+            @*
+            <div class="mini-photo-box">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <img class="mini-photo" src="~/@Model.PhotoPath" />
+                }
+            </div>
+            *@
+            @{
+                Model.PhotoPath = $@"photo/{Model.Hash}.jpeg";
+            }  
+            <img class="large-photo" src="~/@Model.PhotoPath" />
+            <div class="item-price">@lowprice</div>
+            <img class="item-price-valut" src="~/resource/valut.jpg"/>
+        </div>
+        <div class="about-item">
+
+            <h2 style="font-family: NovaBold; padding-bottom: 1em; font-size: 20px;">Коротко о товаре</h2>
+
+            <div class="decrp">
+                <div class="name-decrp">
+                    <h3>Характеристики</h3>
+                </div>
+                <div class="value-decrp">
+                    <h3>@Model.Description.Descr</h3>
+                </div>
+            </div>
+            <div class="decrp">
+                <div class="name-decrp">
+                    <h3>Цвет</h3>
+                </div>
+                <div class="value-decrp">
+                    <h3>@Model.Description.Color</h3>
+                </div>
+            </div>
+            <div class="decrp">
+                <div class="name-decrp">
+                    <h3>Материал</h3>
+                </div>
+                <div class="value-decrp">
+                    <h3>@Model.Description.Matireal</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="items">
+        <h2 style="font-family: NovaBold;padding-bottom: 1em; font-size: 20px;">Цены на @Model.Creater&nbsp;@Model.Name</h2>
+        <div class="other-item">
+            <img class="other-photo" src="~/@Model.PhotoPath" />
+            <div class="other-name">@Model.Name , @Model.Description.Color , @catyNameRus </div>
+            <img class="other-photo-company" src="~/resource/sitilink.jpg" />
+            <div class="other-price-sub">
+                @{
+                    priceSitilink = priceSitilink.Replace("₽", "");
+                    priceSitilink = priceSitilink.Replace(".", "");
+                    priceSitilink = priceSitilink.Replace("р", "");
+                    priceSitilink = priceSitilink.Replace("Р", "");
+                    if (priceSitilink == "" || priceSitilink == " " || priceSitilink == "none")
+                        priceSitilink = " - ";
+                }
+                <h3>@priceSitilink руб.</h3>
+                <a href="@uriSitilink" target="_blank" type="submit"><button class="item-other-sub">Сравнить цены</button></a>
+            </div>
+        </div>
+        <div class="other-item">
+            <img class="other-photo" src="~/@Model.PhotoPath" />
+            <div class="other-name">@Model.Name , @Model.Description.Color , @catyNameRus</div>
+            <img class="other-photo-company" src="~/resource/ldor.jpg" />
+            <div class="other-price-sub">
+                @{
+                    priceLdor = priceLdor.Replace("₽", "");
+                    priceLdor = priceLdor.Replace(".", "");
+                    priceLdor = priceLdor.Replace("р", "");
+                    priceLdor = priceLdor.Replace("Р", "");
+                    if (priceLdor == "" || priceLdor == " " || priceLdor == "none")
+                        priceLdor = " - ";
+                    
+                }
+                <h3>@priceLdor руб.</h3>
+                <a href="@uriLdor" target="_blank" type="submit"><button class="item-other-sub">Сравнить цены</button></a>
+                
+            </div>
+        </div>
+    </div>
+    
+
+</div>

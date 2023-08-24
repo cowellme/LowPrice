@@ -1,0 +1,47 @@
+@font-face {
+    font-family: Ankor; /* ָלÿ רנטפעא */
+    src: url(/resource/fonts/Angkor-Regular.ttf); /* ֿףעü ך פאיכף סמ רנטפעמל */
+}
+@font-face {
+    font-family: Nova; /* ָלÿ רנטפעא */
+    src: url(/resource/fonts/proximanova_regular.ttf); /* ֿףעü ך פאיכף סמ רנטפעמל */
+}
+@font-face {
+    font-family: NovaBold; /* ָלÿ רנטפעא */
+    src: url(/resource/fonts/proximanova_bold.otf); /* ֿףעü ך פאיכף סמ רנטפעמל */
+}
+h1{
+    margin:0;
+    padding: 0;
+}
+h2 {
+    margin: 0;
+    padding: 0;
+}
+h3 {
+    margin: 0;
+    padding: 0;
+}
+html {
+    width: 100%;
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-color: #FFDF8C;
+    font-family: Ankor;
+}
+.main-win{
+    position: relative;
+    left: 50%;
+    transform:translate( -50%,0);
+    width:75%;
+    height: max-content;
+}
+.add-img {
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+}

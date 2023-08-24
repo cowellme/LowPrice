@@ -1,0 +1,3 @@
+Computer::Компьютер
+Cybersport::Киберспорт
+Game::Игры

@@ -1,0 +1,87 @@
+﻿@using LowPrice.Models.Market
+@using LowPrice.Controllers
+@using LowPrice.Models.Admin
+@model LowPrice.Models.Market.AllItems
+@{
+    var num = Auth.Login(Model.Ip);
+    var countLiked = Liked.GetAll(num).Count; 
+}
+<div class="main-win">
+    <img class="add-img" src="resource/add.png"></img>
+    @foreach (var category in Model.Catygories)
+    {
+        @if (category.Items.Count > 0)
+        {
+            
+            string catyName = Slovar.CategoryToRus(category.Name);
+            <h1 class="category-name">@catyName</h1>
+            <div class="category-main">
+            
+                @foreach (var item in category.Items)
+                {
+
+                    var items = Liked.GetAll(num);
+
+                    var like = false;
+                    
+                        foreach (var n in items)
+                        {
+                            if (n != null)
+                            {
+                                if (n.Hash == item.Hash)
+                                {
+                                    like = true;
+                                }
+                            }
+                        }
+                    
+                    
+
+                    <div class="item-mian">
+
+                        @{
+                            item.PhotoPath = $@"photo/{item.Hash}.jpeg";
+                        }
+                        <img src="~/@item.PhotoPath" class="item-main-photo"/>
+
+                        <div class="item-main-price">@item.Price</div>
+
+                        <img class="item-main-price-valut" src="~/resource/valut.jpg">
+
+                        <form asp-action="CheckItem">
+                            <input hidden="true" value="like" name="action"/>
+                            <input hidden="true" name="hash" value="@item.Hash"/>
+                            <button class="void-btn" type="submit">
+                                @{
+                                    if (like)
+                                    {
+                                        <img class="item-main-like" src="~/resource/heartRed.png" />
+                                    }
+                                    else
+                                    {
+                                        <img class="item-main-like" src="~/resource/heart.png" />
+                                    }
+                                }
+                            </button>
+                        </form>
+
+                        <h2 class="item-main-litdescrp">
+                            @item.Creater&nbsp;@item.Name 
+                        </h2>
+                        <form asp-action="CheckItem" method="post">
+                            <input hidden="true" name="action" value="CheckItem" />
+                            <input value="@item.Hash" name="hash" hidden="true"/>
+                            <input class="item-main-sub" type="submit" value="Сравнить цены"/>
+                        </form>
+                    </div>
+
+
+                }
+                <form>
+                    <input type="text" value="category.Name" hidden="true" />
+                    <button type="submit" class="check-all">Смотреть все</button>
+                </form>
+            </div>
+        }
+    }
+</div>

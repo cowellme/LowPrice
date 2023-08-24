@@ -1,0 +1,8 @@
+﻿@model LowPrice.Models.Admin.Photo
+
+<form asp-action="AddPhoto" method="post" enctype="multipart/form-data">
+    <input value="@Model.Hash" type="text" name="hash" hidden="true" />
+    <input value="@Model.Category" type="text" name="category" hidden="true" />
+    <input type="file" name="file"/>
+    <button>Save</button>
+</form>

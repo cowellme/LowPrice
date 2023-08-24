@@ -1,0 +1,48 @@
+
+.dd {
+    margin: 10px;
+    margin-top: 30px;
+    font-family: Nova;
+}
+.dd-in-b {
+    display: block;
+    width: 170px;
+    border: 0;
+    border-radius: 5px;
+    height: 30px;
+    background-color: #FFDF8C;
+    margin: 10px;
+    margin-left: 20px;
+    font-family: NovaBold;
+    font-size: 16px;
+}
+.dd-in-l {
+    margin: 10px;
+    font-family: Nova;
+}
+.dd-in {
+    display: block;
+    margin: 10px;
+    font-family: Nova;
+}
+/* Extra small devices (phones, 599px and down) */
+@media only screen and (max-width: 599px) {
+}
+
+.dd-form {
+    padding: 10px;
+}
+
+.in-add {
+    display: block;
+    width: 200px;
+    height: 25px;
+    margin-left: 20px;
+    font-family: Nova;
+    font-size: 18px;
+}
+.la-add {
+    margin-left: 20px;
+    font-family: NovaBold;
+    font-size: 18px;
+}

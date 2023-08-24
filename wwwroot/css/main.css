@@ -1,0 +1,154 @@
+.category-main {
+    font-family: Nova;
+    height: 222px;
+}
+.category-name {
+    padding: 0;
+    margin: 0;
+    font-size: 30px;
+    font-family: Nova;
+    padding-top: 1em;
+    padding-bottom: .3em;
+}
+.item-mian{
+    width: calc(100% / 8);
+    height: 100%;
+    float: left;
+}
+.item-main-photo{
+    position: relative; 
+    object-fit: contain;
+    width: 100%;
+    height: 110px;
+}
+.item-main-price {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    float: left;
+    font-size: 20px;
+    font-family: NovaBold;
+    padding-top: .1em;
+    padding-left: .3em;
+    padding-right: .1em;
+}
+.item-main-price-valut {
+    object-fit: cover;
+    width: auto;
+    height: 8px;
+    position: relative;
+    font-size: 12px;
+    padding-top: 1em;
+    font-family: NovaBold;
+}
+.item-main-like {
+    object-fit: cover;
+    height: auto;
+    width: 20px;
+    float: right;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+    .item-main-like:hover {
+        content: url(/resource/heartRed.png);
+    }
+.item-main-litdescrp {
+    width: 80%;
+    height: 30px;
+    padding-top: .5em;
+    padding-left: .7em;
+    float: left;
+    font-size: 10px;
+    font-family: Nova;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+.item-main-sub {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 90%;
+    height: 24px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 3px;
+    background: #FFDF8C;
+    font-size: 12px;
+    font-family: NovaBold;
+}
+.check-all{
+    float: right;
+    padding-right: 1em;
+    border: 0;
+    background-color: white;
+}
+.void-btn {
+    width: min-content;
+    height: min-content;
+    border: 0;
+    margin-top: -20px;
+    margin-right:7px;
+    float: right;
+    background-color: white;
+    padding: 0;
+}
+
+.tg {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 50px;
+    width: 50px;
+    margin-top: 2em;
+    margin-bottom: 3em;
+}
+.phone-num {
+    margin-top: 30px;
+    position: relative;
+    left: 50%;
+    transform: translate( -50%, 0);
+    height: 30px;
+    font-size: 24px;
+    border-radius: 5px;
+}
+.reg-liked {
+    display: block;
+    position: relative;
+    font-size: 30px;
+    font-family: Nova;
+    text-align: center;
+}
+.reg-phone-num {
+    position: relative;
+    left: 50%;
+    transform: translate( -50%, 0);
+    margin-top: 2em;
+    display: block;
+    border: 0;
+    border-radius: 5px;
+    color: black;
+    font-family: NovaBold;
+    background-color: #FFDF8C;
+    height: 33px;
+    width: 300px;
+}
+
+.form-reg {
+    height: 200px;
+}
+.in {
+    width: 20px;
+    height: 20px;
+    border: 0;
+    background: white;
+    background: url(heartRed.png) no-repeat left;
+    background-size: 20px;
+    color: white;
+    font-size: 0;
+    padding: 0;
+    cursor: pointer;
+}
+    .in::after {
+        background: url(heart.png) no-repeat left;
+    }

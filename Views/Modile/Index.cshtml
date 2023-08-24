@@ -1,0 +1,165 @@
+﻿@using LowPrice.Models.Admin
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using UAParser
+@using LowPrice.Controllers
+@using LowPrice.Models.Market
+@model LowPrice.Models.Market.AllItems
+@{
+    string os = "";
+    if (Model.ci.OS.Family != null)
+    {
+        os = Model.ci.OS.Family;
+    }
+        
+    var ip = Context.Connection.RemoteIpAddress.ToString();
+    var num = Auth.Login(ip);
+}
+<div class="mobile-win">
+  
+    
+    <div class="content-line">
+        <div class="mobile-search">
+            <form asp-action="Search" asp-controller="Modile" class="mobile-form-search" method="post">
+                <img class="mobile-search-head-loop" type="image" src="~/resource/loop.png"/>
+                <input class="mobile-search-head" name="name" src="~/resource/loop.png" value="Поиск товаров..." onfocus="if(value=='Поиск товаров...'){value='';}" onblur="if(value==''){value='Поиск товаров...';}"/>
+
+                <button type="submit" hidden="true" class="searching"></button>
+            </form>
+        </div>
+        <img class="mobile-add-img" src="~/resource/mobadd.jpg"></img>
+        @foreach (var category in Model.Catygories)
+        {
+            @if (category.Items.Count > 0)
+            {
+                string catyName = Slovar.CategoryToRus(category.Name);
+                <h1 class="mobile-category-name">@catyName</h1>
+                <div class="mobile-category-main">
+
+                    @foreach (var item in category.Items)
+                    { 
+                        var items = Liked.GetAll(num);
+
+                        var like = false;
+                    
+                        foreach (var n in items)
+                        {
+                            if (n != null)
+                            {
+                                if (n.Hash == item.Hash)
+                                {
+                                    like = true;
+                                }
+                            }
+                        }
+                        if (item == category.Items.Last())
+                        {
+                            <div class="mobile-item-mian mobile-left">
+
+                                @{
+                                    item.PhotoPath = $@"photo/{item.Hash}.jpeg";
+                                }
+                                <img src="~/@item.PhotoPath" class="item-main-photo"/>
+
+                                <div class="mobile-item-main-price">@item.Price</div>
+
+                                <img class="mobile-item-main-price-valut" src="~/resource/valut.jpg">
+
+                                <form asp-action="CheckItem">
+                                    <input hidden="true" value="like" name="action"/>
+                                    <input hidden="true" name="hash" value="@item.Hash"/>
+                                    <button class="mobile-void-btn" type="submit">
+                                        @{
+                                            if (like)
+                                            {
+                                                <img class="item-main-like" src="~/resource/heartRed.png" />
+                                            }
+                                            else
+                                            {
+                                                <img class="item-main-like" src="~/resource/heart.png" />
+                                            }
+                                        }
+                                    </button>
+                                </form>
+
+                                <h2 class="mobile-item-main-litdescrp">
+                                    @item.Creater&nbsp;@item.Name
+                                </h2>
+                                <form asp-action="CheckItem" method="post">
+                                    <input hidden="true" name="action" value="check"/>
+                                    <input value="@item.Hash" name="hash" hidden="true"/>
+                                    <input class="mobile-item-main-sub" type="submit" value="Сравнить" />
+                                      
+                                    
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="mobile-item-mian">
+
+                                @{
+                                    item.PhotoPath = $@"photo/{item.Hash}.jpeg";
+                                }
+                                <img src="~/@item.PhotoPath" class="item-main-photo"/>
+
+                                <div class="mobile-item-main-price">@item.Price</div>
+
+                                <img class="mobile-item-main-price-valut" src="~/resource/valut.jpg">
+
+                                <form asp-action="CheckItem">
+                                    <input hidden="true" value="like" name="action"/>
+                                    <input hidden="true" name="hash" value="@item.Hash"/>
+                                    <button class="mobile-void-btn" type="submit">
+                                        <img class="item-main-like" src="~/resource/heart.png"/>
+                                    </button>
+                                </form>
+
+                                <h2 class="mobile-item-main-litdescrp">
+                                    @item.Creater&nbsp;@item.Name
+                                </h2>
+                                <form asp-action="CheckItem" method="post">
+                                    <input hidden="true" name="action" value="check"/>
+                                    <input value="@item.Hash" name="hash" hidden="true"/>
+                                    <input class="mobile-item-main-sub" type="submit" value="Сравнить цены"/>
+                                </form>
+                            </div>
+                        }
+
+
+                    }
+                </div>
+            }
+        }
+    </div>
+    
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-box">
+            <a asp-action="Index">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_2_2023-08-09_20-57-38.jpg"/>
+                <h5 class="mobile-name">Главная</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Catygory">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_3_2023-08-09_20-57-38.jpg"/>
+                <h5 class="mobile-name">Категории</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Liked">
+                <img class="mobile-menu-bts" type="image" src="~/resource/heart.png"/>
+                <h5 class="mobile-name">Избранное</h5>
+            </a>
+        </div>
+
+        <div class="mobile-menu-box mobile-shd">
+            <a asp-action="Userd">
+                <img class="mobile-menu-bts" type="image" src="~/resource/photo_1_2023-08-09_20-57-38.jpg"/>
+                <h5 class="mobile-name">Профиль</h5>
+            </a>
+        </div>
+    </div>
+</div>
